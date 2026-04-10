@@ -1,8 +1,8 @@
-# 🚀 AI Job Retrieval & Optimization Dashboard
+# AI Job Retrieval & Optimization Dashboard
 
 This project explores how different AI search and optimization algorithms can be applied to retrieve and rank AI-related job postings from large-scale datasets.
 
-## 🔍 Problem
+## Problem
 
 Given thousands of job postings, how can we efficiently identify high-quality AI-related jobs while balancing multiple criteria such as:
 
@@ -14,7 +14,7 @@ Given thousands of job postings, how can we efficiently identify high-quality AI
 
 ---
 
-## ⚙️ Methods
+## Methods
 
 Three approaches were implemented and compared:
 
@@ -29,29 +29,29 @@ Three approaches were implemented and compared:
 
 ---
 
-## 📊 Datasets
+## Datasets
 
 * **Dataset 1**: ~19,000 job postings (smaller, older dataset)
 * **Dataset 2**: ~123,000 job postings (large-scale, modern dataset)
 
 ---
 
-## 📈 Key Results
+## Key Results
 
-### 🔹 Algorithm Performance
+### Algorithm Performance
 
 * BFS and A* achieve the highest ranking quality on smaller datasets
 * Genetic Algorithm is significantly faster and more memory-efficient on large datasets
 * For large datasets, all methods converge to similar solution quality
 
-### 🔹 Scalability Insight
+### Scalability Insight
 
 * BFS and A* do not scale well due to exponential growth
 * GA provides stable performance across dataset sizes
 
 ---
 
-## 🧠 Industry Insights
+## Industry Insights
 
 Analysis of job trends reveals:
 
@@ -65,17 +65,17 @@ Analysis of job trends reveals:
 
 ---
 
-## 💻 Tech Stack
+## Tech Stack
 
 * Python
 * Search Algorithms (BFS, A*)
 * Genetic Algorithm
 * Data Analysis
-* Jupyter Notebook
+* Google colab Notebook
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 ai-job-retrieval-dashboard/
@@ -91,7 +91,7 @@ ai-job-retrieval-dashboard/
 
 ---
 
-## 📌 Future Work
+## Future Work
 
 * Build interactive dashboard using Streamlit
 * Improve GA diversity to avoid premature convergence
@@ -99,7 +99,7 @@ ai-job-retrieval-dashboard/
 
 ---
 
-## 🙌 Author
+## Author
 
 Ngoc Bao Tran Nguyen
 
