@@ -6,7 +6,7 @@ import streamlit as st
 st.set_page_config(page_title="AI Job Dashboard", layout="wide")
 
 # -----------------------------
-# Helpers
+# File paths
 # -----------------------------
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 RESULTS_DIR = os.path.join(BASE_DIR, "results")
@@ -16,6 +16,9 @@ GA1_PATH = os.path.join(RESULTS_DIR, "ga_convergence_dataset1.csv")
 GA2_PATH = os.path.join(RESULTS_DIR, "ga_convergence_dataset2.csv")
 
 
+# -----------------------------
+# Load data
+# -----------------------------
 @st.cache_data
 def load_data():
     compare_df = pd.read_csv(COMPARE_PATH)
@@ -24,8 +27,9 @@ def load_data():
     return compare_df, ga1_df, ga2_df
 
 
-def require_files():
+def check_required_files():
     missing = []
+
     for path in [COMPARE_PATH, GA1_PATH, GA2_PATH]:
         if not os.path.exists(path):
             missing.append(path)
@@ -37,14 +41,14 @@ def require_files():
         st.stop()
 
 
-require_files()
+check_required_files()
 compare_df, ga1_df, ga2_df = load_data()
 
 # -----------------------------
 # Header
 # -----------------------------
 st.title("🚀 AI Job Retrieval & Optimization Dashboard")
-st.caption("Comparing BFS, A*, and Genetic Algorithm across two job datasets")
+st.caption("Comparative Analysis of Search & Optimization Algorithms for AI Job Retrieval")
 
 col1, col2, col3 = st.columns(3)
 col1.metric("Datasets", "2")
@@ -57,6 +61,7 @@ st.markdown("---")
 # Dataset Overview
 # -----------------------------
 st.header("📂 Dataset Overview")
+st.caption("Dataset 2 enables more reliable evaluation due to richer features and larger scale.")
 
 d1, d2 = st.columns(2)
 
@@ -66,7 +71,7 @@ with d1:
         **Dataset 1**
         - 19,001 job postings
         - Older dataset
-        - AI-related roles identified partly through proxy features
+        - AI roles identified partly through proxy features
         """
     )
 
@@ -86,17 +91,25 @@ st.markdown("---")
 # Algorithm Comparison
 # -----------------------------
 st.header("📊 Algorithm Comparison")
+st.info("A* achieves the best balance between runtime efficiency and ranking quality, while GA provides strong optimization performance at higher computational cost.")
 
 dataset_choice = st.selectbox(
     "Select dataset",
     ["Dataset 1", "Dataset 2"]
 )
 
-filtered = compare_df[compare_df["Dataset"] == dataset_choice].copy()
+filtered_df = compare_df[compare_df["Dataset"] == dataset_choice].copy()
 
 metric_choice = st.selectbox(
     "Select metric",
-    ["Runtime_Seconds", "Memory_MB", "Node_Expansions", "Ranking_Quality", "Best_Avg_Salary", "Best_Jobs_Remaining"]
+    [
+        "Runtime_Seconds",
+        "Memory_MB",
+        "Node_Expansions",
+        "Ranking_Quality",
+        "Best_Avg_Salary",
+        "Best_Jobs_Remaining"
+    ]
 )
 
 pretty_metric = {
@@ -112,35 +125,30 @@ c1, c2 = st.columns([2, 1])
 
 with c1:
     fig = px.bar(
-        filtered,
+        filtered_df,
         x="Algorithm",
         y=metric_choice,
         title=f"{pretty_metric} - {dataset_choice}",
-        text_auto=".2f" if metric_choice not in ["Node_Expansions", "Best_Jobs_Remaining"] else True
+        text_auto=True
     )
     fig.update_layout(xaxis_title="", yaxis_title=pretty_metric)
     st.plotly_chart(fig, use_container_width=True)
 
 with c2:
     st.subheader("Summary Table")
-    show_cols = [
-        "Algorithm",
-        "Runtime_Seconds",
-        "Memory_MB",
-        "Node_Expansions",
-        "Ranking_Quality",
-        "Best_Avg_Salary",
-        "Best_Jobs_Remaining"
-    ]
-    st.dataframe(filtered[show_cols], use_container_width=True)
-
-if dataset_choice == "Dataset 1":
-    st.markdown(
-        "👉 On the smaller dataset, BFS and A* achieve higher ranking quality, while GA is slightly faster but returns a lower ranking score."
-    )
-else:
-    st.markdown(
-        "👉 On the larger dataset, GA scales much better in runtime and memory while maintaining top-level ranking quality."
+    st.dataframe(
+        filtered_df[
+            [
+                "Algorithm",
+                "Runtime_Seconds",
+                "Memory_MB",
+                "Node_Expansions",
+                "Ranking_Quality",
+                "Best_Avg_Salary",
+                "Best_Jobs_Remaining"
+            ]
+        ],
+        use_container_width=True
     )
 
 st.markdown("---")
@@ -149,21 +157,23 @@ st.markdown("---")
 # GA Convergence
 # -----------------------------
 st.header("📈 Genetic Algorithm Convergence")
+st.caption("GA quickly converges to a stable solution, with minimal improvement after early generations, indicating early optimization saturation.")
 
 ga_dataset_choice = st.radio(
-    "Select GA convergence view",
+    "Select GA dataset",
     ["Dataset 1", "Dataset 2"],
     horizontal=True
 )
 
-ga_df = ga1_df if ga_dataset_choice == "Dataset 1" else ga2_df
+if ga_dataset_choice == "Dataset 1":
+    selected_ga_df = ga1_df
+else:
+    selected_ga_df = ga2_df
 
-plot_cols = [c for c in ["Best_Fitness", "Avg_Fitness"] if c in ga_df.columns]
-
-if plot_cols:
-    ga_long = ga_df.melt(
+if "Avg_Fitness" in selected_ga_df.columns:
+    ga_long = selected_ga_df.melt(
         id_vars="Generation",
-        value_vars=plot_cols,
+        value_vars=["Best_Fitness", "Avg_Fitness"],
         var_name="Metric",
         value_name="Fitness"
     )
@@ -176,26 +186,16 @@ if plot_cols:
         markers=True,
         title=f"GA Convergence - {ga_dataset_choice}"
     )
-    fig_ga.update_layout(xaxis_title="Generation", yaxis_title="Fitness")
-    st.plotly_chart(fig_ga, use_container_width=True)
 else:
     fig_ga = px.line(
-        ga_df,
+        selected_ga_df,
         x="Generation",
         y="Best_Fitness",
         markers=True,
         title=f"GA Convergence - {ga_dataset_choice}"
     )
-    st.plotly_chart(fig_ga, use_container_width=True)
 
-if ga_dataset_choice == "Dataset 1":
-    st.markdown(
-        "👉 For Dataset 1, GA improves quickly in the first few generations, then plateaus early, suggesting fast convergence but limited diversity."
-    )
-else:
-    st.markdown(
-        "👉 For Dataset 2, GA reaches stable best fitness very early, showing strong efficiency at scale but minimal later improvement."
-    )
+st.plotly_chart(fig_ga, use_container_width=True)
 
 st.markdown("---")
 
@@ -221,12 +221,8 @@ with right:
     st.write("- Core technologies: Python, TensorFlow, PyTorch, cloud systems")
 
 st.markdown(
-    "👉 The analysis suggests a shift from general software roles toward specialised AI-focused positions supported by modern ML and cloud technologies."
+    "👉 The analysis suggests a shift from general software roles toward specialised AI-focused positions."
 )
 
 st.markdown("---")
-
-# -----------------------------
-# Footer
-# -----------------------------
-st.caption("Built from exported experimental outputs generated in the original analysis notebook.")
+st.caption("Built from exported experimental outputs generated from the original notebook.")
