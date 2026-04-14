@@ -123,8 +123,9 @@ ai-job-retrieval-dashboard/
 ```bash
 pip install -r requirements.txt
 streamlit run app.py
-
-👤 Author
+```md
+---
+##👤 Author
 
 Ngoc Bao Tran Nguyen
 Data Science & AI Portfolio Project
