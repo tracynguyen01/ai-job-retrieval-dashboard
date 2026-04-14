@@ -51,6 +51,7 @@ We compare three algorithmic strategies:
 ---
 
 ## 📂 Project Structure
+```bash
 ai-job-retrieval-dashboard/
 ├── app.py
 ├── requirements.txt
@@ -61,7 +62,7 @@ ai-job-retrieval-dashboard/
 ├── notebooks/
 ├── reports/
 └── assets/
-
+```
 ---
 
 ---
