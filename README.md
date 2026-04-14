@@ -65,8 +65,6 @@ ai-job-retrieval-dashboard/
 ```
 ---
 
----
-
 ## ⚙️ Tech Stack
 
 - Python  
