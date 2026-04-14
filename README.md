@@ -1,7 +1,10 @@
-# AI Job Retrieval & Optimization Dashboard
+# 🚀 AI Job Retrieval & Optimization Dashboard
 
-This project explores how different AI search and optimization algorithms can be applied to retrieve and rank AI-related job postings from large-scale datasets.
+This project explores how different AI search and optimization algorithms (BFS, A*, and Genetic Algorithm) can be applied to retrieve and rank AI-related job postings from large-scale datasets.
 
+👉 The goal is to evaluate trade-offs between runtime efficiency and ranking quality across datasets.
+
+---
 ## Problem
 
 Given thousands of job postings, how can we efficiently identify high-quality AI-related jobs while balancing multiple criteria such as:
@@ -13,7 +16,39 @@ Given thousands of job postings, how can we efficiently identify high-quality AI
 * Data completeness
 
 ---
+## 📂 Project Structure
 
+ai-job-retrieval-dashboard/
+│
+├── app.py                  # Streamlit dashboard
+├── requirements.txt        # Dependencies
+├── results/                # Processed results (CSV)
+│   ├── algorithm_comparison.csv
+│   ├── ga_convergence_dataset1.csv
+│   └── ga_convergence_dataset2.csv
+│
+├── notebooks/              # Original analysis notebook
+├── reports/                # Report PDF
+└── assets/                 # Images for README
+
+---
+## 📊 Dashboard Preview
+
+![Dashboard](assets/dashboard-preview.png)
+
+## 🌐 Live Dashboard
+
+👉 https://your-app-name.streamlit.app
+
+---
+## ⚙️ Technologies Used
+
+- Python
+- Streamlit
+- Pandas
+- Plotly
+
+---
 ## Methods
 
 Three approaches were implemented and compared:
@@ -35,22 +70,21 @@ Three approaches were implemented and compared:
 * **Dataset 2**: ~123,000 job postings (large-scale, modern dataset)
 
 ---
+## 🧩 Key Features
 
-## Key Results
+- Interactive dashboard built with Streamlit
+- Compare BFS, A*, and Genetic Algorithm performance
+- Dynamic dataset selection
+- GA convergence visualization across datasets
+- Insight-driven analysis for AI job market trends
 
-### Algorithm Performance
+## 📊 Key Insights
 
-* BFS and A* achieve the highest ranking quality on smaller datasets
-* Genetic Algorithm is significantly faster and more memory-efficient on large datasets
-* For large datasets, all methods converge to similar solution quality
-
-### Scalability Insight
-
-* BFS and A* do not scale well due to exponential growth
-* GA provides stable performance across dataset sizes
+- A* provides the best balance between runtime and ranking quality
+- Genetic Algorithm converges quickly but shows limited improvement after early generations
+- Larger datasets enable more reliable evaluation of algorithm performance
 
 ---
-
 ## Industry Insights
 
 Analysis of job trends reveals:
@@ -65,32 +99,6 @@ Analysis of job trends reveals:
 
 ---
 
-## Tech Stack
-
-* Python
-* Search Algorithms (BFS, A*)
-* Genetic Algorithm
-* Data Analysis
-* Google colab Notebook
-
----
-
-## Project Structure
-
-```
-ai-job-retrieval-dashboard/
-│
-├── notebooks/
-│   └── AT1_analysis.ipynb
-│
-├── reports/
-│   └── AT1_report.pdf
-│
-├── README.md
-```
-
----
-
 ## Future Work
 
 * Build interactive dashboard using Streamlit
@@ -98,8 +106,18 @@ ai-job-retrieval-dashboard/
 * Enhance heuristic design for A*
 
 ---
+## 🚀 How to Run Locally
 
-## Author
+```bash
+pip install -r requirements.txt
+streamlit run app.py
 
-Ngoc Bao Tran Nguyen
+---
+## 📌Author
+
+```md
+## 👤 Author
+
+Ngoc Bao Tran Nguyen  
+Data Science & AI Portfolio Project
 
