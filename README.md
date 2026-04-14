@@ -38,7 +38,7 @@ ai-job-retrieval-dashboard/
 
 ## 🌐 Live Dashboard
 
-👉 https://your-app-name.streamlit.app
+👉 https://baotran-11-ai-job-retrieval-dashboard-app-gq23iv.streamlit.app/
 
 ---
 ## ⚙️ Technologies Used
