@@ -123,8 +123,8 @@ ai-job-retrieval-dashboard/
 ```bash
 pip install -r requirements.txt
 streamlit run app.py
-```md
 ---
+```
 ##👤 Author
 
 Ngoc Bao Tran Nguyen
