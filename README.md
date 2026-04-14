@@ -1,123 +1,130 @@
 # 🚀 AI Job Retrieval & Optimization Dashboard
 
-This project explores how different AI search and optimization algorithms (BFS, A*, and Genetic Algorithm) can be applied to retrieve and rank AI-related job postings from large-scale datasets.
+An interactive dashboard that compares search and optimization algorithms (BFS, A*, Genetic Algorithm) for retrieving high-quality AI-related job postings from large-scale datasets.
 
-👉 The goal is to evaluate trade-offs between runtime efficiency and ranking quality across datasets.
-
----
-## Problem
-
-Given thousands of job postings, how can we efficiently identify high-quality AI-related jobs while balancing multiple criteria such as:
-
-* Salary
-* Experience level
-* Location
-* Work type
-* Data completeness
+👉 Focus: balancing **runtime efficiency** and **ranking quality** in real-world job search scenarios.
 
 ---
-## 📂 Project Structure
 
-ai-job-retrieval-dashboard/
-│
-├── app.py                  # Streamlit dashboard
-├── requirements.txt        # Dependencies
-├── results/                # Processed results (CSV)
-│   ├── algorithm_comparison.csv
-│   ├── ga_convergence_dataset1.csv
-│   └── ga_convergence_dataset2.csv
-│
-├── notebooks/              # Original analysis notebook
-├── reports/                # Report PDF
-└── assets/                 # Images for README
-
----
-## 📊 Dashboard Preview
-
-![Dashboard](assets/dashboard-preview.png)
-
-## 🌐 Live Dashboard
+## 🌐 Live Demo
 
 👉 https://baotran-11-ai-job-retrieval-dashboard-app-gq23iv.streamlit.app/
 
 ---
-## ⚙️ Technologies Used
 
-- Python
-- Streamlit
-- Pandas
-- Plotly
+## 📊 Dashboard Preview
 
----
-## Methods
-
-Three approaches were implemented and compared:
-
-* **Breadth-First Search (BFS)**
-  Systematic exploration of all possible filtering combinations
-
-* **A***
-  Heuristic-guided search to prioritize promising job subsets
-
-* **Genetic Algorithm (GA)**
-  Evolutionary optimization for multi-objective decision making
+![Dashboard](assets/dashboard-preview.png)
 
 ---
 
-## Datasets
+## 📌 Problem
 
-* **Dataset 1**: ~19,000 job postings (smaller, older dataset)
-* **Dataset 2**: ~123,000 job postings (large-scale, modern dataset)
+Given thousands of job postings, how can we efficiently identify high-quality AI jobs while balancing multiple criteria?
 
----
-## 🧩 Key Features
-
-- Interactive dashboard built with Streamlit
-- Compare BFS, A*, and Genetic Algorithm performance
-- Dynamic dataset selection
-- GA convergence visualization across datasets
-- Insight-driven analysis for AI job market trends
-
-## 📊 Key Insights
-
-- A* provides the best balance between runtime and ranking quality
-- Genetic Algorithm converges quickly but shows limited improvement after early generations
-- Larger datasets enable more reliable evaluation of algorithm performance
-
----
-## Industry Insights
-
-Analysis of job trends reveals:
-
-* Shift from general software roles → specialized AI roles
-* Increasing demand for:
-
-  * Machine Learning
-  * Deep Learning
-  * Python & AI frameworks (TensorFlow, PyTorch)
-  * Cloud & distributed systems
+- Salary  
+- Experience level  
+- Location  
+- Work type  
+- Data completeness  
 
 ---
 
-## Future Work
+## 🧠 Approach
 
-* Build interactive dashboard using Streamlit
-* Improve GA diversity to avoid premature convergence
-* Enhance heuristic design for A*
+We compare three algorithmic strategies:
+
+### 🔹 Breadth-First Search (BFS)
+- Exhaustive exploration of filtering combinations  
+- Guarantees coverage but is computationally expensive  
+
+### 🔹 A* Search
+- Heuristic-guided search  
+- Prioritizes promising job subsets  
+- Achieves strong balance between speed and quality  
+
+### 🔹 Genetic Algorithm (GA)
+- Evolutionary optimization approach  
+- Handles multi-objective trade-offs  
+- Efficient but may converge early  
 
 ---
-## 🚀 How to Run Locally
+
+## 📂 Project Structure
+ai-job-retrieval-dashboard/
+├── app.py
+├── requirements.txt
+├── results/
+│ ├── algorithm_comparison.csv
+│ ├── ga_convergence_dataset1.csv
+│ └── ga_convergence_dataset2.csv
+├── notebooks/
+├── reports/
+└── assets/
+
+---
+
+---
+
+## ⚙️ Tech Stack
+
+- Python  
+- Streamlit  
+- Pandas  
+- Plotly  
+
+---
+
+## 📊 Datasets
+
+- **Dataset 1** (~19K jobs): smaller, older dataset  
+- **Dataset 2** (~123K jobs): large-scale, modern dataset  
+
+---
+
+## 🔍 Key Features
+
+- Interactive Streamlit dashboard  
+- Algorithm comparison (BFS vs A* vs GA)  
+- Dataset switching  
+- GA convergence visualization  
+- Insight-driven job market analysis  
+
+---
+
+## 📈 Key Insights
+
+- A* achieves the best balance between runtime and ranking quality  
+- GA converges quickly but plateaus early  
+- Larger datasets improve evaluation reliability  
+
+---
+
+## 🧠 Industry Insights
+
+- Shift from general software roles → specialized AI roles  
+- High demand for:
+  - Machine Learning & Deep Learning  
+  - Python (TensorFlow, PyTorch)  
+  - Cloud & distributed systems  
+
+---
+
+## 🚀 Future Improvements
+
+- Improve GA diversity to avoid premature convergence  
+- Enhance A* heuristic design  
+- Extend dashboard with more real-time filtering  
+
+---
+
+## ⚙️ Run Locally
 
 ```bash
 pip install -r requirements.txt
 streamlit run app.py
 
----
-## 📌Author
+👤 Author
 
-```md
-## 👤 Author
-
-Ngoc Bao Tran Nguyen  
+Ngoc Bao Tran Nguyen
 Data Science & AI Portfolio Project
-
