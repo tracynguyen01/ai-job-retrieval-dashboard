@@ -14,7 +14,7 @@ An interactive dashboard that compares search and optimization algorithms (BFS, 
 
 ## 📊 Dashboard Preview
 
-![Dashboard](assets/dashboard-preview.png)
+![Dashboard](assets/dashboard preview.png)
 
 ---
 
