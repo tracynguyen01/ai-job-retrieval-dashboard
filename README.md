@@ -14,7 +14,13 @@ An interactive dashboard that compares search and optimization algorithms (BFS, 
 
 ## 📊 Dashboard Preview
 
-![Dashboard](assets/ai_job_dashboard.jpg)
+<details>
+  <summary>Click to expand</summary>
+  <br/>
+  <p align="center">
+    <img src="assets/ai_job_dashboard.jpg" width="900"/>
+  </p>
+</details>
 
 ---
 
