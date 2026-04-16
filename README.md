@@ -1,4 +1,4 @@
-# 🚀 AI Job Retrieval & Optimization Dashboard
+# 🚀 AI Job Retrieval & Optimization
 
 An interactive dashboard that compares search and optimization algorithms (BFS, A*, Genetic Algorithm) for retrieving high-quality AI-related job postings from large-scale datasets.
 
