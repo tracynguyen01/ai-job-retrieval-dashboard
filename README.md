@@ -14,7 +14,7 @@ An interactive dashboard that compares search and optimization algorithms (BFS, 
 
 ## 📊 Dashboard Preview
 
-![Dashboard](assets/dashboard preview.png)
+![Dashboard](assets/ai_job_dashboard.jpg)
 
 ---
 
