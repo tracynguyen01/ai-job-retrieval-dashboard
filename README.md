@@ -135,4 +135,4 @@ streamlit run app.py
 
 **Ngoc Bao Tran Nguyen**  
 🎓 Data Science & AI Portfolio Project  
-🔗 [LinkedIn](https://linkedin.com/in/your-link)
+🔗 [LinkedIn](https://www.linkedin.com/in/ngoc-bao-tran-nguyen-5742a7255/)
